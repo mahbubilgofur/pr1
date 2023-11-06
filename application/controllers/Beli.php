@@ -20,20 +20,20 @@ class Beli extends CI_Controller
     public function tambah_pembelian()
     {
         if ($this->input->post()) {
+            $nofaktur = $this->Beli_model->get_beli();
+            $tgl = date('Y-m-d');
+
             $data = array(
-                'nofaktur' => $this->input->post('nofaktur'),
-                'tgl' => $this->input->post('tgl'),
+                'nofaktur' => $nofaktur,
+                'tgl' => $tgl,
                 'kodebrg' => $this->input->post('kodebrg'),
                 'qty' => $this->input->post('qty')
             );
 
-            // Tambahkan data pembelian ke dalam tabel tbl_beli
             $this->Beli_model->add_pembelian($data);
-
-            // Tambahkan stok barang
             $this->Barang_model->tambah_stok_barang($data['kodebrg'], $data['qty']);
+            $this->session->set_flashdata('success_message', 'Berhasil pembelian barang');
 
-            // Redirect atau tampilkan pesan sukses
             redirect('beli');
         }
     }

@@ -21,14 +21,16 @@ class Barang extends CI_Controller
 
     public function tambah_barang()
     {
+        $get_brg = $this->Barang_model->get_brg();
         if ($this->input->post()) {
             $data = array(
-                'kodebrg' => $this->input->post('kodebrg'),
+                'kodebrg' => $get_brg,
                 'nama' => $this->input->post('nama'),
                 'satuan' => $this->input->post('satuan'),
                 'stok' => '0'
             );
             $this->Barang_model->add_barang($data);
+            $this->session->set_flashdata('success_message', 'Berhasil Menambah Barang Baru');
         }
 
         redirect('barang');

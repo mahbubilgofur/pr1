@@ -20,9 +20,11 @@ class Jual extends CI_Controller
 
     public function tambah_penjualan()
     {
+        $get_jual = $this->Barang_model->get_brg();
+        $tgl = date('Y-m-d');
         $data = array(
-            'nofaktur' => $this->input->post('nofaktur'),
-            'tgl' => $this->input->post('tgl'),
+            'nofaktur' => $get_jual,
+            'tgl' => $tgl,
             'kodebrg' => $this->input->post('kodebrg'),
             'qty' => $this->input->post('qty')
         );
@@ -32,15 +34,15 @@ class Jual extends CI_Controller
 
         if ($stok_barang === 0) {
             // Stok barang sudah habis
-            $this->session->set_flashdata('error_message', 'Stok barang sudah habis');
+            $this->session->set_flashdata('error_message', 'Stok Barang Sudah Habis');
         } elseif ($stok_barang >= $data['qty']) {
             // Stok mencukupi, lanjutkan penjualan
             $this->Jual_model->tambah_penjualan($data);
             $this->Barang_model->kurangi_stok($data['kodebrg'], $data['qty']);
-            $this->session->set_flashdata('success_message', 'Penjualan berhasil');
+            $this->session->set_flashdata('success_message', 'Penjualan Barang Berhasil');
         } elseif ($stok_barang < $data['qty']) {
             // Stok tidak mencukupi
-            $this->session->set_flashdata('error_message', 'Stok tidak mencukupi');
+            $this->session->set_flashdata('error_message', 'Stok Tidak Mencukupi');
         }
 
         redirect('jual');

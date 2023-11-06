@@ -1,9 +1,15 @@
+<?php if ($this->session->flashdata('success_message')) { ?>
+    <div class="alert alert-success">
+        <?= $this->session->flashdata('success_message') ?>
+    </div>
+<?php } elseif ($this->session->flashdata('error_message')) { ?>
+    <div class="alert alert-danger">
+        <?= $this->session->flashdata('error_message') ?>
+    </div>
+<?php } ?>
 <h2>Tambah Barang Baru</h2>
 <form class="form-inline" action="<?= base_url('barang/tambah_barang') ?>" method="post">
-    <div class="form-group mx-sm-5 mb-2">
-        <label>KODE BARANG</label>
-        <input type="text" name="kodebrg" class="form-control" id="formGroupExampleInput" value="<?php echo sprintf($get_brg) ?>" readonly>
-    </div>
+
     <div class="form-group mx-sm-5 mb-2">
         <label>NAMA_BARANG</label>
         <input type="text" name="nama" class="form-control" id="formGroupExampleInput" placeholder="NAMA BARANG">

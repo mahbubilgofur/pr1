@@ -1,13 +1,15 @@
-<h2>Jual Barang</h2>
+<?php if ($this->session->flashdata('success_message')) { ?>
+    <div class="alert alert-success">
+        <?= $this->session->flashdata('success_message') ?>
+    </div>
+<?php } elseif ($this->session->flashdata('error_message')) { ?>
+    <div class="alert alert-danger">
+        <?= $this->session->flashdata('error_message') ?>
+    </div>
+<?php } ?>
+<h2>TAMBAH PEMBELIAN BARANG</h2>
 <form class="form-inline" action="<?= site_url('beli/tambah_pembelian') ?>" method="post">
-    <div class="form-group mx-sm-5 mb-2">
-        <label>NOFAKTUR</label>
-        <input type="text" name="nofaktur" class="form-control" id="formGroupExampleInput" value="<?php echo sprintf($get_beli) ?>" readonly>
-    </div>
-    <div class="form-group mx-sm-5 mb-2">
-        <label>TGL</label>
-        <input type="date" name="tgl" class="form-control" id="formGroupExampleInput" value="<?= date('Y-m-d'); ?>" readonly>
-    </div>
+
     <div class="form-group mx-sm-5 mb-2">
         <label>KODE_BARANG</label>
         <select class="form-control" name="kodebrg" <?= set_value('kodebrg') ?>>
