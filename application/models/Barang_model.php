@@ -10,12 +10,10 @@ class Barang_model extends CI_Model
     {
         return $this->db->get('tbl_brg')->result();
     }
-
     public function add_barang($data)
     {
         $this->db->insert('tbl_brg', $data);
     }
-
     public function kurangi_stok($kodebrg, $qty)
     {
         $this->db->set('stok', 'stok - ' . (int)$qty, false);

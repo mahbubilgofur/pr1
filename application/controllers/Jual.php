@@ -28,8 +28,6 @@ class Jual extends CI_Controller
             'kodebrg' => $this->input->post('kodebrg'),
             'qty' => $this->input->post('qty')
         );
-
-        // Cek stok barang sebelum penjualan
         $stok_barang = $this->Barang_model->get_stok_by_kodebrg($data['kodebrg']);
 
         if ($stok_barang === 0) {
