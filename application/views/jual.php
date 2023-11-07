@@ -14,7 +14,7 @@
 <form class="form-inline" action="<?= site_url('jual/tambah_penjualan') ?>" method="post">
     <div class="form-group mx-sm-5 mb-2">
         <label>KODE_BARANG</label>
-        <select class="form-control" name="kodebrg" <?= set_value('kodebrg') ?>>
+        <select class="form-control" name="kodebrg" <?= set_value('kodebrg') ?> required>
             <option>PILIH BARANG</option>
             <?php foreach ($get_nama_brg as $row) { ?>
                 <option value="<?= $row->kodebrg ?>"><?= $row->nama ?></option>
@@ -23,7 +23,7 @@
     </div>
     <div class="form-group mx-sm-5 mb-2">
         <label>JUMLAH</label>
-        <input type="number" name="qty" class="form-control" id="formGroupExampleInput2" placeholder="JUMLAH">
+        <input type="number" name="qty" class="form-control" id="formGroupExampleInput2" placeholder="JUMLAH" required>
     </div>
 
     <button type="submit" class="btn btn-primary mb-2">SUBMIT</button>

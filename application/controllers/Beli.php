@@ -30,9 +30,14 @@ class Beli extends CI_Controller
                 'qty' => $this->input->post('qty')
             );
 
-            $this->Beli_model->add_pembelian($data);
-            $this->Barang_model->tambah_stok_barang($data['kodebrg'], $data['qty']);
-            $this->session->set_flashdata('success_message', 'Berhasil pembelian barang');
+            if ($data['qty'] < 1) {
+                // Qty tidak valid, harus lebih besar atau sama dengan 1
+                $this->session->set_flashdata('error_message', 'JUMLAH PEMBELIAN TIDAK VALID 1');
+            } else {
+                $this->Beli_model->add_pembelian($data);
+                $this->Barang_model->tambah_stok($data['kodebrg'], $data['qty']);
+                $this->session->set_flashdata('success_message', 'PEMBELIAN BARANG BERHASIL!!!');
+            }
 
             redirect('beli');
         }

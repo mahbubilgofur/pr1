@@ -12,15 +12,6 @@ class Beli_model extends CI_Model
         $this->db->insert('tbl_beli', $data);
     }
 
-    // Tambahkan fungsi lain sesuai kebutuhan
-
-    public function update_stok($data)
-    {
-        // Mengurangkan stok barang dalam tabel tbl_barang
-        $this->db->set('stok', 'stok + ' . $data['qty'], false);
-        $this->db->where('kodebrg', $data['kodebrg']);
-        $this->db->update('tbl_brg');
-    }
 
     public function get_beli()
     {
@@ -35,7 +26,7 @@ class Beli_model extends CI_Model
             $kode = 1;
         }
         $batas = str_pad($kode, 3, "0", STR_PAD_LEFT);
-        $kodetampil = "BR" . $batas;
+        $kodetampil = "N" . $batas;
         return $kodetampil;
     }
     // Tambahkan fungsi lain sesuai kebutuhan

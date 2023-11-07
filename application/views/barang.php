@@ -12,10 +12,10 @@
 
     <div class="form-group mx-sm-5 mb-2">
         <label>NAMA_BARANG</label>
-        <input type="text" name="nama" class="form-control" id="formGroupExampleInput" placeholder="NAMA BARANG">
+        <input type="text" name="nama" class="form-control" id="formGroupExampleInput" placeholder="NAMA BARANG" required>
     </div>
     <div class="form-group mx-sm-5 mb-2"> <label>SATUAN</label>
-        <input type="text" name="satuan" class="form-control" id="formGroupExampleInput2" placeholder="SATUAN">
+        <input type="text" name="satuan" class="form-control" id="formGroupExampleInput2" placeholder="SATUAN" required>
     </div>
 
     <button type="submit" class="btn btn-primary mb-2">SUBMIT</button>

@@ -20,6 +20,12 @@ class Barang_model extends CI_Model
         $this->db->where('kodebrg', $kodebrg);
         $this->db->update('tbl_brg');
     }
+    public function tambah_stok($kodebrg, $qty)
+    {
+        $this->db->set('stok', 'stok + ' . (int)$qty, false);
+        $this->db->where('kodebrg', $kodebrg);
+        $this->db->update('tbl_brg');
+    }
 
     public function get_stok_by_kodebrg($kodebrg)
     {
@@ -29,18 +35,15 @@ class Barang_model extends CI_Model
         $row = $query->row();
         return $row->stok;
     }
-    public function tambah_stok_barang($kodebrg, $qty)
-    {
-        // Ambil stok barang saat ini
-        $stok_sekarang = $this->db->get_where('tbl_brg', array('kodebrg' => $kodebrg))->row()->stok;
+    // public function tambah_stok_barang($kodebrg, $qty)
+    // {
+    //     $stok_sekarang = $this->db->get_where('tbl_brg', array('kodebrg' => $kodebrg))->row()->stok;
 
-        // Hitung stok baru
-        $stok_baru = $stok_sekarang + $qty;
+    //     $stok_baru = $stok_sekarang + $qty;
 
-        // Update stok barang
-        $this->db->where('kodebrg', $kodebrg);
-        $this->db->update('tbl_brg', array('stok' => $stok_baru));
-    }
+    //     $this->db->where('kodebrg', $kodebrg);
+    //     $this->db->update('tbl_brg', array('stok' => $stok_baru));
+    // }
 
     public function get_brg()
     {

@@ -30,7 +30,7 @@ class Barang extends CI_Controller
                 'stok' => '0'
             );
             $this->Barang_model->add_barang($data);
-            $this->session->set_flashdata('success_message', 'Berhasil Menambah Barang Baru');
+            $this->session->set_flashdata('success_message', 'BERHASIL MENAMBAHKAN BARANG BARU');
         }
 
         redirect('barang');
